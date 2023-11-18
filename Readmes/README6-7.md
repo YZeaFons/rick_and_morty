@@ -1,7 +1,7 @@
 # **💪 HW8 | React Estado LifeCycle - Integration**
 
 ## **🕒 DURACIÓN ESTIMADA**
-
+----------REALIZADA YZEAFONS-------------
 90 minutos
 
 <br />

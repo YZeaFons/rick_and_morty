@@ -1,7 +1,7 @@
 # **💪 HW6 | React Intro - Integration**
 
 ## **🕒 DURACIÓN ESTIMADA**
-
+----------REALIZADA YZEAFONS-------------
 3 horas
 
 </br >
