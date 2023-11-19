@@ -1,13 +1,14 @@
 import { useState } from 'react';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom'
 import './App.css';
 // import Card from './components/Card.jsx';
-import Cards from './components/cards/Cards.jsx';
-import Nav from './components/nav/Nav.jsx';
 import axios from 'axios';
-import { Routes, Route, useNavigate } from 'react-router-dom'
 import About from './components/about/About.jsx';
+import Cards from './components/cards/Cards.jsx';
 import Detail from './components/detail/Detail.jsx';
+import Nav from './components/nav/Nav.jsx';
 import NotFound from './components/notFound/NotFound.jsx';
+import Form from './components/form/Form.jsx';
 // import SearchBar from './components/searchBar/SearchBar.jsx';
 // import characters from './data.js';
 // https://rym2.up.railway.app/api/character/10?key=henrystaff
@@ -29,6 +30,8 @@ function App() {
   //   image: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
   // };
   const navigate = useNavigate()
+  const { pathname } = useLocation()
+  console.log(pathname);
 
   const [characters, setCharacters] = useState([])
 
@@ -84,7 +87,7 @@ function App() {
 
   return (
     <div className='App'>
-      <Nav onSearch={onSearch} addRandom={addRandom} />
+      {pathname !== '/' && <Nav onSearch={onSearch} addRandom={addRandom} />}
       <Routes>
         <Route
           path='/home'
@@ -101,6 +104,10 @@ function App() {
         <Route
           path='*'
           element={<NotFound />}
+        />
+        <Route
+          path='/'
+          element={<Form />}
         />
       </Routes>
 
