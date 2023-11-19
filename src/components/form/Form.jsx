@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import Validation from '../../validator/validation';
 
-
-export default function Form() {
+export default function Form(props) {
 
     // ----------------States--------------------------------------
     const [userData, setUserData] = useState({
@@ -18,37 +18,46 @@ export default function Form() {
             ...userData,
             [event.target.name]: event.target.value
         })
-
+        setError(Validation({
+            ...userData,
+            [event.target.name]: event.target.value
+        }))
     }
-    console.log(userData);
-
-
-
+    const handleSubmit = event => {
+        event.preventDefault()
+        props.login(userData)
+    }
 
     return (
         <div>
-            <form>
-                <label>Email:</label>
+            <form onSubmit={handleSubmit}>
+                <label>Email: </label>
                 <input
                     name='email'
                     type="text"
                     placeholder='Ingrese su email'
+                    value={userData.email}
                     onChange={handleChange}
                 />
+                <p>{errors.email}</p>
                 <br />
 
-                <label>Password:</label>
+                <label>Password: </label>
                 <input
                     name='password'
-                    type="text"
+                    type="password"
                     placeholder='Ingrese su contraseña'
+                    value={userData.password}
                     onChange={handleChange}
                 />
-                <br />
+                <p>{errors.password}</p>
+                <hr />
 
                 <button
                     type='submit'
+                    disabled={errors.email || errors.password}
                 >Enviar</button>
+                <hr />
 
             </form>
         </div>
