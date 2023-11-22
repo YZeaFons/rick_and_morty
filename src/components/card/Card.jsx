@@ -7,17 +7,17 @@ import { useDispatch, useSelector } from 'react-redux';
 export default function Card(props) {
    // --------------Hooks---------------------
    const dispatch = useDispatch()
-   const favCharacters = useSelector(state => state.myFavorites)
+   const myFavCharacters = useSelector(state => state.myFavorites)
    useEffect(() => {
       // favCharacters.forEach((fav) => {
       //    if (fav.id === props.id) {
       //       setFav(true);
       //    }
       // });
-      for (let i = 0; i < favCharacters.length; i++) {
-         if (favCharacters[i].id === props.id) setFav(true)
+      for (let i = 0; i < myFavCharacters.length; i++) {
+         if (myFavCharacters[i].id === props.id) setFav(true)
       }
-   }, [favCharacters]);
+   }, [myFavCharacters]);
    // --------------States----------------------
    const [isFav, setFav] = useState(false)
    // --------------Functions-----------------

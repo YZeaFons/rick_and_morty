@@ -1,0 +1,8 @@
+.AboudBody {
+    height: auto;
+    background-color: black;
+    border-radius: 20px;
+    display: grid;
+    place-items: center;
+    margin: auto;
+}

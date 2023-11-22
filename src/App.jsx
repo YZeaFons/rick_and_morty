@@ -2,6 +2,7 @@ import './App.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
 // import Card from './components/Card.jsx';
 import About from './components/about/About.jsx';
 import Cards from './components/cards/Cards.jsx';
@@ -10,7 +11,6 @@ import Form from './components/form/Form.jsx';
 import Nav from './components/nav/Nav.jsx';
 import NotFound from './components/notFound/NotFound.jsx';
 import Favorites from './components/favorites/Favorites.jsx';
-import { useDispatch, useSelector } from 'react-redux';
 import { removeFav } from './components/redux/actions.js';
 
 const URL = 'https://rym2.up.railway.app/api/character'
