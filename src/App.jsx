@@ -9,6 +9,9 @@ import Detail from './components/detail/Detail.jsx';
 import Form from './components/form/Form.jsx';
 import Nav from './components/nav/Nav.jsx';
 import NotFound from './components/notFound/NotFound.jsx';
+import Favorites from './components/favorites/Favorites.jsx';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeFav } from './components/redux/actions.js';
 
 const URL = 'https://rym2.up.railway.app/api/character'
 const API_KEY = 'henrystaff'
@@ -17,6 +20,8 @@ function App() {
   // ------------------------------Hooks------------------------------
   const { pathname } = useLocation()
   const navigate = useNavigate()
+  const favCharacters = useSelector(state => state.myFavorites)
+  const dispatch = useDispatch()
   // ------------------------------States-----------------------------
   const [characters, setCharacters] = useState([])
   const [acces, setAcces] = useState(false)
@@ -61,6 +66,13 @@ function App() {
     navigate('/home')
   }
   function onClose(id) {
+
+    for (let i = 0; i < favCharacters.length; i++) {
+      if (favCharacters[i].id === id) {
+        dispatch(removeFav(id))
+      }
+    }
+
     setCharacters(
       characters.filter(character => character.id !== Number(id))
     )
@@ -85,6 +97,10 @@ function App() {
     <div className='App'>
       {pathname !== '/' && <Nav onSearch={onSearch} addRandom={addRandom} logout={logout} />}
       <Routes>
+        <Route
+          path='/favorites'
+          element={<Favorites favCharacters={favCharacters} onClose={onClose} />}
+        />
         <Route
           path='/home'
           element={<Cards characters={characters} onClose={onClose} />}

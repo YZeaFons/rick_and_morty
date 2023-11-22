@@ -1,3 +1,4 @@
+import './Form.css'
 import React, { useState } from 'react';
 import Validation from '../../validator/validation';
 

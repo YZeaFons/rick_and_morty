@@ -1,24 +1,62 @@
+import './Card.css'
+import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
+import { addFav, removeFav } from '../redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function Card(props) {
-   // console.log(props);
-   console.log(props.id);
+   // --------------Hooks---------------------
+   const dispatch = useDispatch()
+   const favCharacters = useSelector(state => state.myFavorites)
+   useEffect(() => {
+      // favCharacters.forEach((fav) => {
+      //    if (fav.id === props.id) {
+      //       setFav(true);
+      //    }
+      // });
+      for (let i = 0; i < favCharacters.length; i++) {
+         if (favCharacters[i].id === props.id) setFav(true)
+      }
+   }, [favCharacters]);
+   // --------------States----------------------
+   const [isFav, setFav] = useState(false)
+   // --------------Functions-----------------
+
+   function handleFavorite() {
+      if (isFav) {
+         setFav(false)
+         dispatch(removeFav(props.id));
+      } else {
+         setFav(true)
+         dispatch(addFav(props))
+      }
+   }
+
    return (
-      <div>
-         <button onClick={() => props.onClose(props.id)}>X</button>
-         <h2>ID: {props.id}</h2>
+      <div className='card'>
+         <div className='card2'>
+            <Link
+               to={`/detail/${props.id}`}
+            >
+               <img src={props.image} alt='' />
+            </Link>
+            <button onClick={() => props.onClose(props.id)}>X</button>
+            {
+               isFav ? (
+                  <button onClick={handleFavorite}>❤️</button>
+               ) : (
+                  <button onClick={handleFavorite}>🤍</button>
+               )
+            }
+            <h2 className='textId'>ID: {props.id}</h2>
 
-         <h2>Name: {props.name}</h2>
+            <h2 className='heading'>Name: {props.name}</h2>
 
-         <h2>Status: {props.status}</h2>
-         <h2>Specie: {props.species}</h2>
-         <h2>Gender: {props.gender}</h2>
-         <h2>Origin: {props.origin}</h2>
-         <Link
-            to={`/detail/${props.id}`}
-         >
-            <img src={props.image} alt='' />
-         </Link>
+            <h2>Status: {props.status}</h2>
+            <h2>Specie: {props.species}</h2>
+            <h2>Gender: {props.gender}</h2>
+            <h2>Origin: {props.origin}</h2>
+         </div>
       </div>
    );
 }

@@ -1,22 +1,26 @@
+import './Nav.css'
 import { NavLink } from "react-router-dom";
 import SearchBar from "../searchBar/SearchBar";
 
 
 export default function Nav(props) {
     return (
-        <div>
-            <h3>Navigate</h3>
+        <div className='navigates'>
+            {/* <h3>Navigate</h3> */}
             <NavLink to='/home'>
-                <button>Home</button>
+                <button className='personalButton'>Home</button>
             </NavLink>
             <NavLink to='/about'>
-                <button>About</button>
+                <button className='personalButton'>About</button>
             </NavLink>
-            <button onClick={props.logout}>LogOut</button>
+            <NavLink to='/favorites'>
+                <button className='personalButton'>Favorites</button>
+            </NavLink>
+            <button onClick={props.logout} className='personalButton'>LogOut</button>
             <hr />
             <SearchBar onSearch={props.onSearch} />
-            <button onClick={() => props.addRandom()}>Agregar Aleatorio</button>
-
+            <br />
+            <button onClick={() => props.addRandom()} className='personalButton2'>Agregar Aleatorio</button>
             <hr />
         </div>
     );

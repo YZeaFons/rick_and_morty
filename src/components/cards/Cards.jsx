@@ -2,8 +2,6 @@ import Card from '../card/Card';
 
 export default function Cards({ characters, onClose }) {
    // console.log(characters);
-
-
    return (
       <div>
          {

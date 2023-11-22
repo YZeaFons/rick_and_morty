@@ -1,7 +1,7 @@
 # **💪 HW12 | React Redux - Integration**
 
 ## **🕒 DURACIÓN ESTIMADA**
-
+----------REALIZADA YZEAFONS-------------
 2 horas
 
 <br />

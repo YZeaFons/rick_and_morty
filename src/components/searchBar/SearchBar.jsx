@@ -23,7 +23,8 @@ export default function SearchBar(props) {
             onChange={handleChange}
             value={id}
          />
-         <button onClick={handleClick}>Agregar</button>
+         <button onClick={handleClick} className='personalButton2'>Agregar</button>
+         <br />
       </div>
    );
 }
