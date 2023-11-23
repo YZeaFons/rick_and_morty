@@ -1,4 +1,4 @@
-import './Form.css'
+import styles from './Form.module.css'
 import React, { useState } from 'react';
 import Validation from '../../validator/validation';
 
@@ -30,7 +30,7 @@ export default function Form(props) {
     }
 
     return (
-        <div>
+        <div className={styles.container}>
             <form onSubmit={handleSubmit}>
                 <label>Email: </label>
                 <input

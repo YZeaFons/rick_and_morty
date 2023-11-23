@@ -13,6 +13,7 @@ export default function Favorites({ favCharacters, onClose }) {
         dispatch(orderCards(event.target.value))
     }
     function handleFilter(event) {
+        dispatch(filterCards('All'))
         dispatch(filterCards(event.target.value))
     }
     // const favCharacters = useSelector(state => state.myFavorites)

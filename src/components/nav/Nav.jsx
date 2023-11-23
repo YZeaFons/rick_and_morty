@@ -18,9 +18,7 @@ export default function Nav(props) {
             </NavLink>
             <button onClick={props.logout} className='personalButton'>LogOut</button>
             <hr />
-            <SearchBar onSearch={props.onSearch} />
-            <br />
-            <button onClick={() => props.addRandom()} className='personalButton2'>Agregar Aleatorio</button>
+            <SearchBar onSearch={props.onSearch} addRandom={props.addRandom} />
             <hr />
         </div>
     );

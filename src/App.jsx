@@ -27,7 +27,7 @@ function App() {
   const [acces, setAcces] = useState(false)
   // ------------------------------UseEffect--------------------------
   useEffect(() => {
-    !acces && navigate('/home');
+    !acces && navigate('/');
   }, [acces]);
   // ------------------------------Functions--------------------------
   function charExists(id) {

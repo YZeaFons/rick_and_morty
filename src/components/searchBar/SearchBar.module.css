@@ -1,0 +1,13 @@
+.container {
+    margin: auto;
+    text-align: center;
+    margin: 10px;
+    padding: 0px 10px 0px 10px;
+}
+
+.container label {
+    text-shadow: black;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.container button {}
