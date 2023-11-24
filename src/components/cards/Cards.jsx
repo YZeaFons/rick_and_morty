@@ -1,9 +1,10 @@
 import Card from '../card/Card';
+import './Cards.css'
 
 export default function Cards({ characters, onClose }) {
    // console.log(characters);
    return (
-      <div>
+      <div className='cardContainer'>
          {
             !characters.length
                ? <h2>Por favor ingrese un personaje</h2>

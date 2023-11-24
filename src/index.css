@@ -26,14 +26,16 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
+  /* display: flex; */
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
   background-image: url(https://wallpaper.dog/large/17058618.jpg);
-  /* background-repeat: no-repeat; */
   background-position: center;
-  background-size: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
 }
 
 h1 {
