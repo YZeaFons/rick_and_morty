@@ -7,19 +7,35 @@ const initialstate = {
 }
 const reducer = (state = initialstate, action) => {
     switch (action.type) {
-        case ADD_FAV:
+        // -------ESTE ES MI CODIGO ANTIGUO-----------------
+        // case ADD_FAV:
+        //     return {
+        //         ...state,
+        //         myFavorites: [...state.myFavorites, action.payload],
+        //         allCharacters: [...state.allCharacters, action.payload]
+        //     }
+        case 'ADD_FAV':
             return {
                 ...state,
-                myFavorites: [...state.myFavorites, action.payload],
-                allCharacters: [...state.allCharacters, action.payload]
-            }
-        case REMOVE_FAV:
-            const updateMyFavorites = state.myFavorites.filter(item => item.id !== action.payload)
+                myFavorites: action.payload,
+                allCharacters: action.payload
+            };
+
+        // ------------ESTE ES MI ANTIGUO CODIGO-------------------
+        // case REMOVE_FAV:
+        //     const updateMyFavorites = state.myFavorites.filter(item => item.id !== action.payload)
+        //     return {
+        //         ...state,
+        //         myFavorites: updateMyFavorites,
+        //         allCharacters: updateMyFavorites
+        //     }
+
+        case 'REMOVE_FAV':
             return {
                 ...state,
-                myFavorites: updateMyFavorites,
-                allCharacters: updateMyFavorites
-            }
+                myFavorites: action.payload
+            };
+
         case FILTER:
             if (action.payload === 'All') {
                 return {

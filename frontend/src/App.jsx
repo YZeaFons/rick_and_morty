@@ -82,15 +82,34 @@ function App() {
     )
   }
   // ---Login---
-  const EMAILTEMP = 'yeison@gmail.com'
-  const PASSWORD = 'FZeaCor.23'
+  // const EMAILTEMP = 'yeison@gmail.com'
+  // const PASSWORD = 'FZeaCor.23'
+
+  // ---------FUNCION LOGIN ANTERIOR-----------------------------
+  // function login(userData) {
+  //   if (userData.password === PASSWORD && userData.email === EMAILTEMP) {
+  //     setAcces(true)
+  //     navigate('/home')
+  //   }
+  //   else { window.alert('Usuario o contraseña invalidos') }
+  // }
   function login(userData) {
-    if (userData.password === PASSWORD && userData.email === EMAILTEMP) {
-      setAcces(true)
-      navigate('/home')
-    }
-    else { window.alert('Usuario o contraseña invalidos') }
+    const { email, password } = userData;
+    console.log(userData);
+    console.log(email);
+    console.log(password);
+
+    const URL = 'http://localhost:3001/rickandmorty/login/';
+    axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+      const { access } = data;
+      console.log(data);
+      if (access) {
+        setAcces(data);
+        access && navigate('/home');
+      } else { window.alert('Usuario o contraseña invalidos') }
+    });
   }
+
   // ---LogOut---
   function logout() {
     setAcces(false)
