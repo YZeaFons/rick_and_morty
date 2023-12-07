@@ -53,22 +53,24 @@ function App() {
     navigate('/home')
   }
 
-  function onSearch(id) {
-    if (id === "") { window.alert('Debes ingresar un valor') }
-    else if (charExists(id)) window.alert(`El personaje con ID ${id} ya existe`)
-    else
-      // axios(`${URL}/${id}?key=${API_KEY}`).then(
-      axios(`${URL}/${id}`).then(
-        ({ data }) => {
-          if (data.name) {
-            setCharacters([...characters, data]);
-          } else {
-            window.alert('¡No hay personajes con este ID!');
-          }
+  async function onSearch(id) {
+    try {
+      if (id === "") { window.alert('Debes ingresar un valor') }
+      else if (charExists(id)) alert(`El personaje con ID ${id} ya existe`)
+      else {
+        const { data } = await axios(`${URL}/${id}`)
+        if (data.name) {
+          setCharacters([...characters, data]);
+          navigate('/home')
+        } else {
+          window.alert('¡No hay personajes con este ID!');
         }
-      );
-    navigate('/home')
+      }
+    } catch (error) {
+      alert(error.message)
+    }
   }
+
   function onClose(id) {
 
     for (let i = 0; i < favCharacters.length; i++) {
@@ -93,28 +95,25 @@ function App() {
   //   }
   //   else { window.alert('Usuario o contraseña invalidos') }
   // }
-  function login(userData) {
-    const { email, password } = userData;
-    console.log(userData);
-    console.log(email);
-    console.log(password);
-
-    const URL = 'http://localhost:3001/rickandmorty/login/';
-    axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
-      const { access } = data;
-      console.log(data);
-      if (access) {
-        setAcces(data);
-        access && navigate('/home');
+  async function login(userData) {
+    try {
+      const { email, password } = userData;
+      const URL = 'http://localhost:3001/rickandmorty/login/';
+      const { data } = await axios(URL + `?email=${email}&password=${password}`)
+      // const { access } = data;
+      if (data.access) {
+        setAcces(data.access);
+        navigate('/home');
       } else { window.alert('Usuario o contraseña invalidos') }
-    });
+    } catch (error) {
+      alert(error.message)
+    }
   }
 
   // ---LogOut---
   function logout() {
     setAcces(false)
   }
-
 
   return (
     <div className='App'>
