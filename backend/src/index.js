@@ -7,7 +7,7 @@ const PORT = 3001
 const { conn } = require('./DB_connection.js')
 const { error } = require('console')
 
-conn.sync({ force: true })
+conn.sync({ force: false })
     .then(() => {
         server.listen(PORT, () => {
             console.log('Server listening in Port: ', PORT);
@@ -33,13 +33,13 @@ server.use(morgan('dev'))
 server.use('/rickandmorty', apiRouter)
 
 
-server.get('/rickandmorty/character/:id', (req, res) => {
-    // res.json(res.params)
-    // console.log(req.params.id);
-    // res.json(req.id)
-    if (req.params.id) return getCharById(req, res)
-    else res.status(500).json({ message: 'Error' })
-})
+// server.get('/rickandmorty/character/:id', (req, res) => {
+//     // res.json(res.params)
+//     // console.log(req.params.id);
+//     // res.json(req.id)
+//     if (req.params.id) return getCharById(req, res)
+//     else res.status(500).json({ message: 'Error' })
+// })
 
 
 

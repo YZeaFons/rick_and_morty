@@ -34,6 +34,7 @@ module.exports = (sequelize) => {
       location: {
          type: DataTypes.STRING,
          allowNull: false,
+         defaultValue: 'Unknown'
       }
 
    }, { timestamps: false });

@@ -8,11 +8,11 @@ import axios from 'axios'
 //     }
 // }
 export const addFav = (character) => {
+    const endpoint = 'http://localhost:3001/rickandmorty/fav';
     return async (dispatch) => {
         try {
-            const endpoint = 'http://localhost:3001/rickandmorty/fav';
             const { data } = await axios.post(endpoint, character)
-            dispatch({
+            return dispatch({
                 type: ADD_FAV,
                 payload: data,
             });

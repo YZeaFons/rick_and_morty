@@ -14,7 +14,7 @@ const reducer = (state = initialstate, action) => {
         //         myFavorites: [...state.myFavorites, action.payload],
         //         allCharacters: [...state.allCharacters, action.payload]
         //     }
-        case 'ADD_FAV':
+        case ADD_FAV:
             return {
                 ...state,
                 myFavorites: action.payload,
